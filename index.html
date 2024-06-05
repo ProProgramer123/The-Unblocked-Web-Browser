@@ -15,8 +15,8 @@
   </style>
 </head>
 <body>
-  <h1>Web Browser</h1>
-  <input type="text" id="url-input" placeholder="Enter URL">
+  <h1>Unblocked Web Browser</h1>
+  <input type="text" id="url-input" placeholder="Enter URL" value="https://www.google.com">
   <button id="go-button">Go</button>
   <div id="browser-frame"></div>
 
@@ -27,7 +27,7 @@
 
     goButton.addEventListener('click', () => {
       const url = urlInput.value;
-      browserFrame.src = `https://${url}`;
+      browserFrame.src = url;
     });
 
     urlInput.addEventListener('keypress', (e) => {
@@ -35,6 +35,18 @@
         goButton.click();
       }
     });
+
+    // Override user-select styles to allow text selection
+    document.head.innerHTML += `
+      <style>
+        * {
+          -webkit-user-select: auto !important;
+          -moz-user-select: inherit  !important;
+          -ms-user-select: inherit  !important;
+          user-select: auto  !important;
+        }
+      </style>
+    `;
   </script>
 </body>
 </html>

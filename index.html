@@ -6,28 +6,20 @@
     body {
       font-family: Arial, sans-serif;
     }
-    #browser-frame {
-      width: 100%;
-      height: 80vh;
-      border: 1px solid #ccc;
-      overflow: auto;
-    }
   </style>
 </head>
 <body>
   <h1>Unblocked Web Browser</h1>
   <input type="text" id="url-input" placeholder="Enter URL" value="https://www.google.com">
   <button id="go-button">Go</button>
-  <div id="browser-frame"></div>
 
   <script>
     const urlInput = document.getElementById('url-input');
     const goButton = document.getElementById('go-button');
-    const browserFrame = document.getElementById('browser-frame');
 
     goButton.addEventListener('click', () => {
       const url = urlInput.value;
-      browserFrame.src = url;
+      window.open(url, '_blank');
     });
 
     urlInput.addEventListener('keypress', (e) => {
@@ -35,18 +27,6 @@
         goButton.click();
       }
     });
-
-    // Override user-select styles to allow text selection
-    document.head.innerHTML += `
-      <style>
-        * {
-          -webkit-user-select: auto !important;
-          -moz-user-select: inherit  !important;
-          -ms-user-select: inherit  !important;
-          user-select: auto  !important;
-        }
-      </style>
-    `;
   </script>
 </body>
 </html>
